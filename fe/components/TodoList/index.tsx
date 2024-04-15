@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import Todo from "../Todo";
@@ -40,8 +40,10 @@ const TodoList: React.FC = () => {
         <Todo name="Learn JavaScript" prioriry="Low" />
       </div>
       <div className="grid grid-flow-col gap-x-4">
-        <Input className="flex" />
+        <Input className="flex" label="Enter todo" labelPlacement="outside" />
         <Select
+          label="Assigned to"
+          labelPlacement="outside"
           selectedKeys={[value]}
           onChange={handleSelectionChange}
           className=""
@@ -52,7 +54,9 @@ const TodoList: React.FC = () => {
             </SelectItem>
           ))}
         </Select>
-        <Button color="primary" className="">Add</Button>
+        <Button color="primary" className="">
+          Add
+        </Button>
       </div>
     </div>
   );

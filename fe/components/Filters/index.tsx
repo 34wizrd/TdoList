@@ -1,8 +1,16 @@
+"use client";
+
 import React, { ChangeEvent } from "react";
 import { Input } from "@nextui-org/input";
-import { Radio, RadioGroup, Select, SelectItem, Spacer } from "@nextui-org/react";
+import {
+  Radio,
+  RadioGroup,
+  Select,
+  SelectItem,
+  Spacer,
+} from "@nextui-org/react";
 import { useDispatch } from "react-redux";
-import filtersSlice from "./filtersSlice";
+import { filtersSlice } from "./filtersSlice";
 
 interface Priority {
   value: string;
@@ -39,13 +47,16 @@ const Filters: React.FC = () => {
   return (
     <div className="">
       <div className="py-1">
-        <p className="text-black">Search</p>
+        
         <Input
+          label="Search"
+          labelPlacement="outside"
           type="Search"
           placeholder="Enter todo"
           size="sm"
           value={searchText}
           onChange={handleSearchTextChange}
+          className="text-black"
         />
       </div>
       <Spacer x={4} />
@@ -72,8 +83,9 @@ const Filters: React.FC = () => {
       </div>
       <Spacer x={4} />
       <div className="py-1">
-        <p className="text-black">Search By Priority</p>
         <Select
+          label="Search By Priority"
+          labelPlacement="outside"
           placeholder="Select "
           className=""
           size="md"

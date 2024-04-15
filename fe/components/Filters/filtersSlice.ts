@@ -1,22 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAppSlice } from "@/lib/createAppSlice";
 
-export default createSlice({
-  name: 'filters',
-  initialState: {
-    search: '',
-    status: 'All',
+export type TFilter = {
+  search: string;
+  status: string;
+  priorities: string[];
+};
+
+export interface IFilterState {
+  filters: TFilter;
+}
+
+const initialState: IFilterState = {
+  filters: {
+    search: "",
+    status: "All",
     priorities: [],
   },
-  reducers: {
+};
+
+export const filtersSlice = createAppSlice({
+  name: "filters",
+  initialState,
+  reducers: (create) => ({
     searchFilterChange: (state, action) => {
       // mutation || IMMER
-      state.search = action.payload;
+      state.filters.search = action.payload;
     },
     statusFilterChange: (state, action) => {
-      state.status = action.payload;
+      state.filters.status = action.payload;
     },
     prioritiesFilterChange: (state, action) => {
-      state.priorities = action.payload;
+      state.filters.priorities = action.payload;
     },
-  },
+  }),
+
+  // selectors: {
+  //   searchFilter: (filters) => filters.search
+  // }
 });
